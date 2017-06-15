@@ -1,0 +1,24 @@
+{
+    "browsersList": ["last 2 versions", "> 5%"],
+    "styles": [{
+        "src": "web/scss/*.scss",
+        "dest": "web/css/",
+        "sourcemaps": "sourcemaps/",
+        "includePaths": [
+          "./vendor/wearebase"
+        ],
+        "watch": [
+            "web/scss/*.scss",
+            "web/scss/**/*.scss"
+        ]
+    }],
+    "javascript": [{
+        "src": "web/js/src/*.js",
+        "dest": "web/js/dest/",
+        "sourcemaps": "sourcemaps/",
+        "watch": [
+            "web/js/src/**/*.js",
+            "web/js/src/*.js"
+        ]
+    }]
+}
