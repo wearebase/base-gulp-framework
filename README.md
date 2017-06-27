@@ -10,16 +10,19 @@ or
 
     yarn add wearebase/base-gulp-framework
 
-Then create a `gulpfile.js`:
+Then create a `gulpfile.js`, requiring the framework and initialising it with `configure`:
 
-    var gulp = require('base-gulp-framework')(require('gulp'), require('./base-config.json'));
+    var gulp = require('gulp'),
+        baseGulpFramework = require('base-gulp-framework');
 
-And create a `base-config.json`. Modify the example (`example-config.json`) included in this repo. Top tip: You can also use arrays for src files if you wish.
+    baseGulpFramework.configure(gulp, require('config.json'));
+
+And create a `config.json`. Modify the example (`example-config.json`) included in this repo. *Top tip:* You can also use arrays for src files if you wish.
 
 Build commands are inside arrays, so you can add multiple 'groups' to allow the builds to run multiple times in different parts of your app.
 
 ## Adding your own tasks
-Then you can add your own tasks below that if you need them. If you add a 'css' task when one already exists in this module, gulp will use your css task.
+Then you can add your own tasks at the bottom of your `gulpfile.js` if you need them. If you add a 'css' task when one already exists in this module, gulp will use _your_ css task.
 
 ## Running local gulp
 Add this to your `package.json`:

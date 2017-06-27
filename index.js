@@ -1,6 +1,6 @@
-module.exports = function(gulp, config) {
-    "use strict";
+'use strict';
 
+var configure = function (gulp, config) {
     var gulpPlugin = require('gulp-load-plugins')(),
         env = {
             production: gulpPlugin.util.env.production,
@@ -15,21 +15,21 @@ module.exports = function(gulp, config) {
 
             gulp.task('styles', 'Build stylesheets', function () {
                 return gulp.src(thisBuild.src)
-                    .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.init()))
-                    .pipe(gulpPlugin.sassGlob())
-                    .pipe(
-                        gulpPlugin.sass({
-                            includePaths: thisBuild.includePaths
-                        }).on('error', gulpPlugin.sass.logError)
-                    )
-                    .pipe(
-                        gulpPlugin.autoprefixer({
-                            browsers: config.browsersList
-                        })
-                    )
-                    .pipe(gulpPlugin.csso())
-                    .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.write(thisBuild.sourcemaps)))
-                    .pipe(gulp.dest(thisBuild.dest));
+                .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.init()))
+                .pipe(gulpPlugin.sassGlob())
+                .pipe(
+                    gulpPlugin.sass({
+                        includePaths: thisBuild.includePaths
+                    }).on('error', gulpPlugin.sass.logError)
+                )
+                .pipe(
+                    gulpPlugin.autoprefixer({
+                        browsers: config.browsersList
+                    })
+                )
+                .pipe(gulpPlugin.csso())
+                .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.write(thisBuild.sourcemaps)))
+                .pipe(gulp.dest(thisBuild.dest));
             }, {
                 aliases: ['stylesheets', 'css', 'scss']
             });
@@ -42,11 +42,11 @@ module.exports = function(gulp, config) {
 
             gulp.task('javascript', 'Compile Javascript', function () {
                 return gulp.src(thisBuild.src)
-                    .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.init()))
-                    .pipe(gulpPlugins.include())
-                    .pipe(gulpPlugins.uglify())
-                    .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.write(thisBuild.sourcemaps)))
-                    .pipe(gulp.dest(thisBuild.dest));
+                .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.init()))
+                .pipe(gulpPlugins.include())
+                .pipe(gulpPlugins.uglify())
+                .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.write(thisBuild.sourcemaps)))
+                .pipe(gulp.dest(thisBuild.dest));
             }, {
                 aliases: ['js']
             });
@@ -76,5 +76,7 @@ module.exports = function(gulp, config) {
         }
     });
 
-    return gulp;
 };
+
+// Expose 'configure'
+module.exports.configure = configure;
