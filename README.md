@@ -1,14 +1,18 @@
-# Base Gulp Framework
-This project moves common gulp build steps into a single package, allowing it to be shared across projects. Inspired by [this StackOverflow reply](https://stackoverflow.com/a/37317351).
+# [Base Gulp Framework](https://www.npmjs.com/package/base-gulp-framework)
+This package moves common gulp build steps into a single package, allowing it to be shared across projects.
+
+Inspired by [this StackOverflow reply](https://stackoverflow.com/a/37317351).
+
+This package is provided as is by [the Base team](https://wearebase.com) and we offer no support. Use it at your own risk.
 
 ## Getting started
 To install:
 
-    npm install wearebase/base-gulp-framework --save
+    npm i base-gulp-framework --save
 
 or
 
-    yarn add wearebase/base-gulp-framework
+    yarn add base-gulp-framework
 
 Then create a `gulpfile.js`, requiring the framework and initialising it with `configure`:
 
@@ -41,6 +45,7 @@ This framework is designed to work with npm v5 or yarn, where the dependencies f
 If you have trouble calling gulp (see "Running local gulp"), then add gulp to your dependencies in your project.
 
     npm install gulp --save
+
 or
 
     yarn add gulp
