@@ -1,10 +1,10 @@
 'use strict';
 
 var configure = function (gulp, config) {
-    var gulpPlugin = require('gulp-load-plugins')(),
+    var gulpPlugins = require('gulp-load-plugins')(),
         env = {
-            production: gulpPlugin.util.env.production,
-            sourceMaps: !gulpPlugin.util.env.production
+            production: gulpPlugins.util.env.production,
+            sourceMaps: !gulpPlugins.util.env.production
         };
 
     require('gulp-help')(gulp);
@@ -15,20 +15,20 @@ var configure = function (gulp, config) {
 
             gulp.task('styles', 'Build stylesheets', function () {
                 return gulp.src(thisBuild.src)
-                .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.init()))
-                .pipe(gulpPlugin.sassGlob())
+                .pipe(gulpPlugins.if(env.sourceMaps, gulpPlugins.sourcemaps.init()))
+                .pipe(gulpPlugins.sassGlob())
                 .pipe(
-                    gulpPlugin.sass({
+                    gulpPlugins.sass({
                         includePaths: thisBuild.includePaths
-                    }).on('error', gulpPlugin.sass.logError)
+                    }).on('error', gulpPlugins.sass.logError)
                 )
                 .pipe(
-                    gulpPlugin.autoprefixer({
+                    gulpPlugins.autoprefixer({
                         browsers: config.browsersList
                     })
                 )
-                .pipe(gulpPlugin.csso())
-                .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.write(thisBuild.sourcemaps)))
+                .pipe(gulpPlugins.csso())
+                .pipe(gulpPlugins.if(env.sourceMaps, gulpPlugins.sourcemaps.write(thisBuild.sourcemaps)))
                 .pipe(gulp.dest(thisBuild.dest));
             }, {
                 aliases: ['stylesheets', 'css', 'scss']
@@ -42,10 +42,10 @@ var configure = function (gulp, config) {
 
             gulp.task('javascript', 'Compile Javascript', function () {
                 return gulp.src(thisBuild.src)
-                .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.init()))
+                .pipe(gulpPlugins.if(env.sourceMaps, gulpPlugins.sourcemaps.init()))
                 .pipe(gulpPlugins.include())
                 .pipe(gulpPlugins.uglify())
-                .pipe(gulpPlugin.if(env.sourceMaps, gulpPlugin.sourcemaps.write(thisBuild.sourcemaps)))
+                .pipe(gulpPlugins.if(env.sourceMaps, gulpPlugins.sourcemaps.write(thisBuild.sourcemaps)))
                 .pipe(gulp.dest(thisBuild.dest));
             }, {
                 aliases: ['js']
