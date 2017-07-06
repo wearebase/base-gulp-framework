@@ -1,6 +1,8 @@
 # [Base Gulp Framework](https://www.npmjs.com/package/base-gulp-framework)
 This package moves common gulp build steps into a single package, allowing it to be shared across projects.
 
+This requires node v6 or newer.
+
 Inspired by [this StackOverflow reply](https://stackoverflow.com/a/37317351).
 
 This package is provided as is by [the Base team](https://wearebase.com) and we offer no support. Use it at your own risk.
