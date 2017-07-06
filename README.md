@@ -26,7 +26,14 @@ And create a `config.json`. Modify the example (`example-config.json`) included 
 Build commands are inside arrays, so you can add multiple 'groups' to allow the builds to run multiple times in different parts of your app.
 
 ## Adding your own tasks
-Then you can add your own tasks at the bottom of your `gulpfile.js` if you need them. If you add a 'css' task when one already exists in this module, gulp will use _your_ css task.
+Then you can add your own tasks at the bottom of your `gulpfile.js` if you need them. If you add a task that is named the same as one already in this module, gulp will use _your_ task only.
+
+## Run in production mode
+Each of the Gulp tasks in this framework can toggle elements off if you're building in production. For example, CSS and JS sourcemaps will not generate when in production mode.
+
+To build with production enabled:
+
+    gulp assets --production
 
 ## Running local gulp
 Add this to your `package.json`:
@@ -37,7 +44,7 @@ Add this to your `package.json`:
 
 If you're using yarn, it won't be automatically added to the `node_modules/.bin` folder as it's a sub-dependency, so also run `yarn add gulp`.
 
-Now you can run `npm run gulp` (or `yarn run gulp`). To pass flags through, use `yarn run gulp -- --production`.
+Now you can run `npm run gulp` (or `yarn run gulp`). To pass flags through, add an extra double dash: `yarn run gulp -- --production`.
 
 ## Older npm versions
 This framework is designed to work with npm v5 or yarn, where the dependencies form a flat structure.
