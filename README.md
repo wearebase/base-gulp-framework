@@ -5,7 +5,7 @@ This requires node v6 or newer.
 
 Inspired by [this StackOverflow reply](https://stackoverflow.com/a/37317351).
 
-This package is provided as is by [the Base team](https://wearebase.com) and we offer no support. Use it at your own risk.
+This package is provided as is by [the Base team](https://wearebase.com) and we offer no support. Use it at your own risk. Your mileage *will* vary.
 
 ## Getting started
 To install:
@@ -58,3 +58,21 @@ If you have trouble calling gulp (see "Running local gulp"), then add gulp to yo
 or
 
     yarn add gulp
+    
+## What happens to my code?
+Here's the processes your code goes through.
+
+### Sass to CSS
+* Files are read from the `src` folder specified in your config.
+* Sourcemaps are generated (if not in production mode)
+* Sass files are globbed with [gulp-sass-glob](https://www.npmjs.com/package/gulp-sass-glob), allowing you to wildcard your folders and files
+* Sass is compiled into CSS
+* CSS is optimised with [CSSO](https://github.com/css/csso)
+* Files are sent to the `dest` folder specified in your config.
+
+### Javascript
+* Files are read from the `src` folder specified in your config.
+* Sourcemaps are generated (if not in production mode)
+* Files are included using [gulp-include](https://www.npmjs.com/package/gulp-include), allowing you to split your files up and include them similar to Sass' @import.
+* JS is uglified and compressed.
+* Files are sent to the `dest` folder specified in your config.
