@@ -27,6 +27,14 @@ And create a `config.json`. Modify the example (`example-config.json`) included 
 
 Build commands are inside arrays, so you can add multiple 'groups' to allow the builds to run multiple times in different parts of your app.
 
+## Configuration
+The configuration file has been carefully designed to help with potential changes and different projects.
+
+* If you leave out the `styles` or `javascript` configs, those tasks won't exist.
+* The `styles` and `javascript` configs are in arrays, allowing you to add multiple groups of configs which will run a task on multiple groups of files.
+* You can define your own [Browserslist](https://github.com/ai/browserslist) and browsers you support.
+* Customise your includePaths for Sass
+
 ## Adding your own tasks
 Then you can add your own tasks at the bottom of your `gulpfile.js` if you need them. If you add a task that is named the same as one already in this module, gulp will use _your_ task only.
 
@@ -67,6 +75,7 @@ Here's the processes your code goes through.
 * Sourcemaps are generated (if not in production mode)
 * Sass files are globbed with [gulp-sass-glob](https://www.npmjs.com/package/gulp-sass-glob), allowing you to wildcard your folders and files
 * Sass is compiled into CSS
+* CSS Prefixes [are automatically added](https://www.npmjs.com/package/gulp-autoprefixer) based on your supported browsers in the config.
 * CSS is optimised with [CSSO](https://github.com/css/csso)
 * Files are sent to the `dest` folder specified in your config.
 
