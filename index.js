@@ -2,10 +2,14 @@
 
 var configure = function (gulp, config) {
     var gulpPlugins = require('gulp-load-plugins')(),
-        env = {
-            production: gulpPlugins.util.env.production,
-            sourceMaps: !gulpPlugins.util.env.production
-        };
+        argv = require('minimist')(process.argv.slice(2), {
+            boolean: 'production'
+        });
+
+    var env = {
+        production: argv.production,
+        sourceMaps: !argv.production
+    };
 
     require('gulp-help')(gulp);
 
