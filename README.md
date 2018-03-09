@@ -21,11 +21,11 @@ Then create a `gulpfile.js`, requiring the framework and initialising it with `c
     var gulp = require('gulp'),
         baseGulpFramework = require('base-gulp-framework');
 
-    baseGulpFramework.configure(gulp, require('config.json'));
+    baseGulpFramework.configure(gulp, require('./config.json'));
 
-And create a `config.json`. Modify the example (`example-config.json`) included in this repo. *Top tip:* You can also use arrays for src files if you wish.
+And create a `config.json`. Modify the example (`example-config.json`) included in this repo.
 
-Build commands are inside arrays, so you can add multiple 'groups' to allow the builds to run multiple times in different parts of your app.
+*Top tip:* You can also use arrays for src files if you wish: Build commands are inside arrays, so you can add multiple 'groups' to allow the builds to run multiple times in different parts of your app.
 
 ## Configuration
 The configuration file has been carefully designed to help with potential changes and different projects.
