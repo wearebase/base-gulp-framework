@@ -59,13 +59,15 @@ var configure = function (gulp, config) {
 
     gulp.task('watch', 'Watch for changes', function() {
         if (config.styles) {
-            for (var i = 0; i < config.styles.length; i++) {
-                gulp.watch(config.styles[i].watch, ['styles']);
+            for (var stylesCount = 0; stylesCount < config.styles.length; stylesCount++) {
+                gulp.watch(config.styles[stylesCount].watch, ['styles']);
             }
         }
 
         if (config.javascript) {
-            gulp.watch(config.javascript.watch, ['javascript']);
+            for (var jsCount = 0; jsCount < config.javascript.length; jsCount++) {
+                gulp.watch(config.javascript[jsCount].watch, ['javascript']);
+            }
         }
     });
 
